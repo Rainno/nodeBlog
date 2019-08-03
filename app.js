@@ -2,15 +2,18 @@
 const querystring = require('querystring')
 const handleBlogRouter = require('./src/router/blog.js')
 const handleUserRouter = require('./src/router/user.js')
+const bodyParser = require('body-parser')
+
+//app.use(bodyParser());
 
 //处理post data   POST请求
 const getPostData = (req)=>{
     const promise = new Promise((resolve,reject)=>{
         if(req.method !== 'POST'){
             resolve({})
-            return
+            returns
         }
-        if(req.headers['content-type'] !== 'application/json'){
+        if(req.headers['Content-type'] !== 'application/json'){
             resolve({})
             return
         }

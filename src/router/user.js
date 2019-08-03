@@ -1,3 +1,7 @@
+const {loginCheck} = require('../controller/user.js')
+const {SuccessModel, ErrorModel} = require('../model/resModel')
+const bodyParser = require('body-parser')
+
 const handleUserRouter = (req,res) => {
     const method = req.method; //GET POST
     //以下两项统一在app.js中定义
@@ -6,8 +10,14 @@ const handleUserRouter = (req,res) => {
 
     //登录
     if(method === 'POST' && req.path === '/api/user/login'){
-        return {
-            msg: '这是用户登录的借口'
+        //console.log('body',req.body)
+        const {username, password} = req.body
+        //console.log('user',username,password)
+        const loginDataResult = loginCheck(username,password)
+        if(loginDataResult){
+            return new SuccessModel()
+        }else{
+            return new ErrorModel('登录失败')
         }
     }
 }
