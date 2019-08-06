@@ -1,6 +1,5 @@
 const {loginCheck} = require('../controller/user.js')
 const {SuccessModel, ErrorModel} = require('../model/resModel')
-const bodyParser = require('body-parser')
 
 const handleUserRouter = (req,res) => {
     const method = req.method; //GET POST
